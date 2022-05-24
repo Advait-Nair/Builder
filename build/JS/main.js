@@ -21,11 +21,8 @@ stylerTools.newListStyle([
 	},
 	{
 		name: 'box-set-container-new',
-		css: null,
+		css: 'background:#eee; color:#666; border-radius: 0.6rem;padding: 1rem;',
 	},
 ]);
 console.log(stylerTools)
 stylerTools.autoApplyAll();
-// stylerTools.applyStyle('.box','box')
-// stylerTools.applyStyle('.box-set-container', 'box-set-container')
-// stylerTools.applyStyle('.strayBox');

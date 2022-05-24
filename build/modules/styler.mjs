@@ -48,6 +48,19 @@ const stylerTools = {
         Object.keys(stylerTools.styles).forEach(styleName => {
             stylerTools.applyStyle(`.${styleName}`, stylerTools.styles[styleName].css)
         })
+    },
+
+    applyRawCSS: CSS => {
+        if(!document.querySelector('style.StylerCustomCSS')) {
+            const styleElement = document.createElement('style');
+            styleElement.innerHTML = CSS;
+            document.head.append(styleElement);
+        } else {
+            const styleElement = document.querySelector(
+				'style.StylerCustomCSS'
+			);
+            styleElement.innerHTML += CSS;
+        }
     }
 }
 

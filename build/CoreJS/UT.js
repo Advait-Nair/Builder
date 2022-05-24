@@ -1,5 +1,3 @@
-import ErrorHandler from "./dev/ErrorHandler";
-
 class UT {
 	chew(l) {
 		this.b95 = '';
