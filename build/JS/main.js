@@ -5,9 +5,8 @@
 // In order to disable DevMode, you have to change the value of 'ignore' in the CoreJS/dev/ErrorHandler.js file to true. This disables error handling. Vice-versa, set it to false to enable dev mode. This is the same procedure for other files in the 'dev' folder.
 
 
-// Import Statements
+// Start Import Statements
 import stylerTools from '../modules/styler.mjs'
-import GUITools from '../modules/GUITools.mjs'
 
 stylerTools.diagnostics({
 	location: 'build/JS/main.js',
@@ -30,40 +29,26 @@ stylerTools.newListStyle([
 console.log(stylerTools)
 stylerTools.autoApplyAll();
 
-const gui = new GUITools();
 
-gui.box(
-	30,
-	50,
+// Using UITools (Test)
+// Deprecating GUITools for a more clean approach, with UITools.
 
-	{
-		windowTitle: 'Title',
-		windowContent: [
-			{ type: 'text', content: 'Hello World' },
-			{
-				type: 'textinput',
-				content: 'Hello World',
-				class: '',
-				event: {
-					type: 'click',
-					event: e => {
-						console.log('success')
-					},
-					extra: null,
-				},
-			},
-			{
-				type: 'textbox',
-				content: 'Hello World',
-				class: '',
-				event: {
-					type: 'click',
-					event: e => {
-						console.log('success')
-					},
-					extra: null,
-				},
-			},
-		],
-	}
-);
+import UI from '../modules/UI/UITools.js';
+import DefaultUIPack from '../modules/UI/DefaultUIPack.js';
+
+// Get UI contents we need
+const {header} = DefaultUIPack;
+
+const UITools = new UI();
+
+
+const mainUI_Object = {
+	windowTitle: 'New Window',
+	windowContent: [
+		header('New...', 3)
+	],
+	windowDimensions: {width: 30, height: 90, mode: '%'},
+}
+
+console.log(mainUI_Object)
+UITools.boxUI(mainUI_Object);

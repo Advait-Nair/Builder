@@ -26,8 +26,8 @@
     position: absolute;
     top: 10%;
     left: 10%;
-    width: 9rem;
-    height: 9rem;
+    min-width: 9rem;
+    min-height: 9rem;
     border-radius: 1rem;
     box-shadow: 0 0 29px 12px rgba(0, 0, 0, 0.097);
     z-index:9999999999;
