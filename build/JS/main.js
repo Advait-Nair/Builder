@@ -45,9 +45,9 @@ const UITools = new UI();
 const mainUI_Object = {
 	windowTitle: 'New Window',
 	windowContent: [
-		header('New...', 3)
+		header('New...')
 	],
-	windowDimensions: {width: 30, height: 90, mode: '%'},
+	windowDimensions: {width: 17, height: 90, mode: {width:'rem', height:'px'}},
 }
 
 console.log(mainUI_Object)

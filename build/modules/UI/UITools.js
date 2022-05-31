@@ -1,3 +1,4 @@
+import UICSS from "./UICSS.js";
 class UI {
     constructor() {
         
@@ -16,7 +17,7 @@ class UI {
         }
 
         // Construct window
-        const boxWindow = this.constructBoxWindow(UI_Object.windowDimensions.width, UI_Object.windowDimensions.height,UI_Object.windowDimensions.mode, UI_Object.windowTitle, contentCallback);
+        const boxWindow = this.constructBoxWindow(UI_Object.windowDimensions.width, UI_Object.windowDimensions.height,UI_Object.windowDimensions.mode, UI_Object.windowTitle, contentCallback, UI_Object.events || undefined);
         console.log(boxWindow)
 
         // Append to body
@@ -25,11 +26,12 @@ class UI {
 
     }
     
-    constructBoxWindow (width, height, mode, windowTitle, contentCallback) {
+    constructBoxWindow (width, height, mode, windowTitle, contentCallback, events) {
         console.log(width, height, mode, windowTitle)
 
         // Get dimension mode
-        const dimensionMode = mode || 'px';
+        const dimensionModeWidth = mode.width || 'px';
+        const dimensionModeHeight = mode.height || 'px';
 
 
         // Main div element
@@ -45,9 +47,6 @@ class UI {
         // Close button
         const close = document.createElement("div");
         close.classList.add("close");
-        close.onclick = () => {
-            return this.remove();
-        }
 
         // Close image
         const closeImg = document.createElement("img");
@@ -68,18 +67,26 @@ class UI {
 
         content = contentCallback(content) || 'NO DEFINED CONTENT';
 
+        close.addEventListener('click', e => {
+            return close.parentNode.parentNode.remove();
+        });
 
 
         // Append elements
         bar.append(close);
         close.append(closeImg);
+        bar.append(title);
         ui.append(bar);
-        ui.append(title);
         ui.append(content);
 
+        // Setup events
+
+
         // Set width and height
-        ui.style.width = `${width}${dimensionMode}`;
-        ui.style.height = height ? `${height}${dimensionMode}` : 'auto';
+        ui.style.width = `${width}${dimensionModeWidth}`;
+        ui.style.height = height ? `${height}${dimensionModeHeight}` : 'auto';
+
+
 
         // Look for invalid data
         if(!title)

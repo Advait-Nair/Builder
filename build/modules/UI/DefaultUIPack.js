@@ -7,8 +7,8 @@ const format = (tag, classes, content, properties) => {
 };
 
 const DefaultUIPack = {
-    header: (text, size) => {
-        return format('div', 'DefaultUIPack-header', text, {type: 'style', content: `font-size: ${size || 2}rem`});
+    header: (content, size) => {
+        return format('div', 'DefaultUIPack-header', content, {type: 'style', content: `font-size: ${size || 2}rem`});
     }
 };
 
